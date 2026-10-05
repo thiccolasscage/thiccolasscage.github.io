@@ -9,9 +9,11 @@
   body { margin: 0; font: 16px/1.4 system-ui, sans-serif; background: #111; color: #eee; }
   main { max-width: 640px; margin: 0 auto; padding: 16px 16px 96px; }
   .top, .actions, .nav, .marks { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-  .top { margin-bottom: 16px; }
+  .top { margin-bottom: 12px; }
   button, a.btn { font: inherit; border: 1px solid #444; background: #1c1c1c; color: inherit; border-radius: 8px; padding: 8px 12px; text-decoration: none; cursor: pointer; }
   button.on { border-color: #8ab4ff; color: #8ab4ff; }
+  .letter-bar { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+  .letter-bar button { padding: 6px 8px; min-width: 2em; }
   .card { border: 1px solid #333; border-radius: 12px; padding: 20px; min-height: 220px; }
   h1 { font-size: 28px; margin: 0 0 8px; word-break: break-word; }
   .meta { color: #aaa; margin: 0 0 4px; }
@@ -19,7 +21,9 @@
   .actions, .marks { margin-top: 16px; }
   .nav { margin-top: 16px; }
   .count { margin-left: auto; color: #aaa; }
-  textarea { width: 100%; box-sizing: border-box; margin-top: 12px; min-height: 72px; background: #1c1c1c; color: inherit; border: 1px solid #333; border-radius: 8px; padding: 8px; }
+  textarea, #search { width: 100%; box-sizing: border-box; margin-top: 12px; background: #1c1c1c; color: inherit; border: 1px solid #333; border-radius: 8px; padding: 8px; font: inherit; }
+  textarea { min-height: 72px; }
+  #search { margin-top: 12px; }
   .hint { color: #777; font-size: 13px; margin-top: 12px; }
   .savebar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 8px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: #111; border-top: 1px solid #333; }
   .savebar button { flex: 1; }
@@ -29,7 +33,9 @@
 <body>
 <main>
   <div class="top" id="filters"></div>
+  <div class="letter-bar" id="letters"></div>
   <div class="card" id="card"></div>
+  <input type="search" id="search" placeholder="Search names…" autocomplete="off" spellcheck="false">
   <div class="nav">
     <button id="prev" type="button">Previous</button>
     <button id="next" type="button">Next</button>
@@ -37,7 +43,7 @@
   </div>
   <p id="status"></p>
   <textarea id="out" readonly placeholder="No marks yet."></textarea>
-  <p class="hint">Save stays on screen for every sub. It sends the mark list to the share sheet so you can keep the file. Marks are not in the aisle log until that file comes back.</p>
+  <p class="hint">Save stays on screen for every sub. It sends the mark list to the share sheet so you can keep the file. Marks are not in the aisle log until that file comes back. Reddit often cools down after many rapid Opens; copy the name and paste into the Reddit app instead. Marks still need Save + send-back.</p>
 </main>
 <div class="savebar">
   <button id="save" type="button">Save</button>
@@ -56,14 +62,31 @@ const FILTERS = [
 const LABEL = { keep: '✅ keep', parked: '🅿️ parked', unjoin: '❌ unjoin', favorite: '⭐ favorite' };
 const KEY = 'aisle-clicker-marks';
 let filter = 'all';
+let letter = 'all';
+let query = '';
 let index = 0;
 let marks = {};
 try { marks = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { marks = {}; }
 
-function list() {
+function firstLetterKey(name) {
+  const ch = String(name || '').charAt(0).toUpperCase();
+  return /[A-Z]/.test(ch) ? ch : '#';
+}
+function statusList() {
   if (filter === 'all') return SUBS;
   if (filter === 'marked') return SUBS.filter(s => marks[s.name]);
   return SUBS.filter(s => (marks[s.name] || s.action) === filter);
+}
+function list() {
+  let items = statusList();
+  if (letter !== 'all') {
+    items = items.filter(s => firstLetterKey(s.name) === letter);
+  }
+  if (query) {
+    const q = query.toLowerCase();
+    items = items.filter(s => s.name.toLowerCase().includes(q));
+  }
+  return items;
 }
 function csvText() {
   const lines = ['subreddit,action'];
@@ -76,6 +99,69 @@ function saveLocal() {
 }
 function escapeHtml(t) {
   return String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function copyName(name) {
+  const status = document.getElementById('status');
+  const done = () => { status.textContent = 'Copied ' + name + ' — paste into Reddit'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(name).then(done).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = name;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, name.length);
+      try {
+        document.execCommand('copy');
+        done();
+      } catch (e) {
+        status.textContent = 'Copy failed';
+      }
+      document.body.removeChild(ta);
+    });
+  }
+  const ta = document.createElement('textarea');
+  ta.value = name;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  ta.setSelectionRange(0, name.length);
+  try {
+    document.execCommand('copy');
+    done();
+  } catch (e) {
+    status.textContent = 'Copy failed';
+  }
+  document.body.removeChild(ta);
+}
+function renderLetters() {
+  const bar = document.getElementById('letters');
+  const available = new Set();
+  statusList().forEach(s => available.add(firstLetterKey(s.name)));
+  if (letter !== 'all' && !available.has(letter)) letter = 'all';
+  const keys = ['all'];
+  if (available.has('#')) keys.push('#');
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(ch => {
+    if (available.has(ch)) keys.push(ch);
+  });
+  bar.innerHTML = '';
+  keys.forEach(key => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = key === 'all' ? 'All' : key;
+    if (key === letter) b.classList.add('on');
+    b.addEventListener('click', () => {
+      letter = key;
+      index = 0;
+      renderLetters();
+      show();
+    });
+    bar.appendChild(b);
+  });
 }
 function show() {
   const items = list();
@@ -100,18 +186,21 @@ function show() {
     '<p class="meta">' + escapeHtml(subsLine + low) + '</p>' +
     '<p class="meta">Description not loaded</p>' +
     '<span class="badge">' + escapeHtml(badge) + '</span>' +
-    '<div class="actions"><a class="btn" href="' + web + '" target="_blank" rel="noopener">Open</a></div>' +
+    '<div class="actions"><a class="btn" href="' + web + '" target="_blank" rel="noopener">Open</a>' +
+    '<button type="button" id="copy-name">Copy name</button></div>' +
     '<div class="marks">' +
     '<button type="button" data-mark="keep">Keep</button>' +
     '<button type="button" data-mark="parked">Park</button>' +
     '<button type="button" data-mark="unjoin">Unjoin</button>' +
     '<button type="button" data-mark="">Undo</button></div>';
+  card.querySelector('#copy-name').addEventListener('click', () => copyName(s.name));
   card.querySelectorAll('[data-mark]').forEach(btn => {
     btn.addEventListener('click', () => {
       const value = btn.getAttribute('data-mark');
       if (!value) delete marks[s.name];
       else marks[s.name] = value;
       saveLocal();
+      renderLetters();
       const itemsNow = list();
       if (itemsNow.includes(s)) index = itemsNow.indexOf(s);
       else if (index >= itemsNow.length) index = Math.max(0, itemsNow.length - 1);
@@ -122,8 +211,10 @@ function show() {
 }
 function setFilter(value, btn) {
   filter = value;
+  letter = 'all';
   index = 0;
   document.querySelectorAll('#filters button').forEach(b => b.classList.toggle('on', b === btn));
+  renderLetters();
   show();
 }
 const bar = document.getElementById('filters');
@@ -134,6 +225,11 @@ FILTERS.forEach(([value, label], i) => {
   if (i === 0) b.classList.add('on');
   b.addEventListener('click', () => setFilter(value, b));
   bar.appendChild(b);
+});
+document.getElementById('search').addEventListener('input', e => {
+  query = e.target.value;
+  index = 0;
+  show();
 });
 document.getElementById('prev').addEventListener('click', () => { index--; show(); });
 document.getElementById('next').addEventListener('click', () => { index++; show(); });
@@ -172,6 +268,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') { index++; show(); }
 });
 saveLocal();
+renderLetters();
 show();
 </script>
 </body>
