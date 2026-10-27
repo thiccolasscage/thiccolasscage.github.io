@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NSFW Theme Spin</title>
+  <meta name="description" content="Adult catalog picker. Spin a title or settle a dilemma across mainstream, studio, streamer, and Reddit lanes." />
+  <meta name="theme-color" content="#110d0e" />
+  <link rel="icon" href="favicon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#stage">Skip to the current pick</a>
+
+  <div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div id="gate-card" class="gate-card">
+      <p class="eyebrow">Adults only</p>
+      <h1 id="gate-title">This catalog is 18+.</h1>
+      <p class="lede">NSFW Theme Spin lists mainstream films next to explicit studio scenes, streamer clips, and Reddit communities. Watch links leave this page and can open adult sites. You need to be 18 or older to continue.</p>
+      <div class="gate-actions">
+        <button id="age-accept" class="btn btn-primary" type="button">I am 18 or older</button>
+        <button id="age-leave" class="btn btn-ghost" type="button">Leave</button>
+      </div>
+    </div>
+    <div id="left-panel" class="left-panel" hidden>
+      <p class="eyebrow">Closed</p>
+      <h1>Come back when you are of age.</h1>
+      <p class="lede">The catalog stays closed in this browser until you confirm you are 18 or older.</p>
+      <button id="age-return" class="btn btn-primary" type="button">I am 18 or older</button>
+    </div>
+  </div>
+
+  <div id="app" hidden>
+    <header class="top">
+      <div class="brand">
+        <p class="eyebrow" id="eyebrow">Adult catalog · 18+</p>
+        <h1>NSFW Theme Spin</h1>
+      </div>
+      <div class="top-actions">
+        <button id="mode-spin" class="btn mode-btn" type="button" aria-pressed="true">Spin</button>
+        <button id="mode-dilemma" class="btn mode-btn" type="button" aria-pressed="false">Dilemma</button>
+        <a class="btn btn-ghost" href="#packs">Packs</a>
+        <button id="clear-seen" class="btn btn-ghost" type="button">Clear seen</button>
+        <span id="seen-count" class="seen-count"></span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside id="filters" class="filters" aria-label="Filters"></aside>
+      <div class="content">
+        <p id="pool-line" class="pool-line" data-count="0"></p>
+        <div id="banner"></div>
+        <section id="stage" aria-live="polite"></section>
+        <section id="shelf"></section>
+        <section id="packs"></section>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>Seen marks stay in this browser only. The catalog and mainstream posters are local files, so spin and filter work with no network. Watch links are the only outbound step. Keys: S spin, D dilemma, 1 and 2 to choose.</p>
+    </footer>
+  </div>
+
+  <noscript>
+    <p>NSFW Theme Spin needs JavaScript to read the local catalog. Enable JavaScript and open this file again.</p>
+  </noscript>
+
+  <script src="data/catalog.js"></script>
+  <script src="js/logic.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
