@@ -97,7 +97,7 @@ a { color: var(--gold); }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02em; }
 
-.gate-card h1, .left-panel h1 {
+.gate-card h1, .gate-card h2, .left-panel h1 {
   margin: 0 0 10px;
   font-size: clamp(32px, 6vw, 44px);
   line-height: 0.95;
@@ -131,6 +131,110 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02e
 .btn-ghost:hover, .btn:hover { border-color: var(--gold); }
 
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.catalog-bar {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  background: rgba(17, 13, 14, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.catalog-bar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 22px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.catalog-kicker {
+  margin: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--gold);
+}
+
+.catalog-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1 1 280px;
+  min-width: 0;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg-sunken);
+}
+
+.catalog-chip {
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 6px 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.catalog-chip[aria-checked="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.catalog-chip .count {
+  margin-left: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.catalog-status {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 6px 22px 8px;
+  color: var(--faint);
+  font-size: 12px;
+}
+
+.catalog-change { margin-left: auto; }
+
+.mood { z-index: 24; background: rgba(8, 6, 7, 0.94); }
+
+.mood-card { width: min(520px, 100%); }
+
+.mood-options { display: flex; flex-direction: column; gap: 8px; }
+
+.mood-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-sunken);
+  text-align: left;
+  color: var(--text);
+}
+
+.mood-option[aria-checked="true"] {
+  border-color: var(--accent);
+  background: rgba(255, 106, 82, 0.16);
+}
+
+.mood-name { font-weight: 700; }
+
+.mood-detail { color: var(--faint); font-size: 13px; }
+
+.mood-keep { margin-top: 12px; }
+
+body.mood-open { overflow: hidden; }
 
 .top {
   display: flex;
@@ -174,8 +278,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02e
 
 .filters {
   position: sticky;
-  top: 12px;
-  max-height: calc(100vh - 24px);
+  top: calc(var(--catalog-offset, 72px) + 12px);
+  max-height: calc(100vh - var(--catalog-offset, 72px) - 24px);
   overflow: auto;
   padding: 14px;
   border: 1px solid var(--line);
@@ -217,6 +321,20 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02e
   background: rgba(255, 106, 82, 0.16);
   color: var(--text);
 }
+
+.chip:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.theme-chip.is-empty { opacity: 0.55; }
+
+.theme-chip.is-empty[aria-pressed="true"] { opacity: 1; }
+
+.theme-count {
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  font-size: 11px;
+}
+
+.lane-lock-note { color: var(--gold); }
 
 .chip .count {
   margin-left: 6px;
@@ -486,6 +604,17 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02e
 
 .mini-card.is-on, .pack-card[aria-pressed="true"] { border-color: var(--accent); }
 
+.pack-card.is-empty {
+  border-style: dashed;
+  background: transparent;
+}
+
+.pack-empty {
+  margin: 8px 0 0;
+  color: var(--gold);
+  font-size: 13px;
+}
+
 .mini-name, .pack-title {
   display: block;
   margin: 8px 0 0;
@@ -536,4 +665,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02e
   .feature, .versus { grid-template-columns: 1fr; }
   .vs { justify-self: center; }
   .top, .layout, .site-footer { padding-left: 16px; padding-right: 16px; }
+  .catalog-bar-inner, .catalog-status { padding-left: 16px; padding-right: 16px; }
+  .catalog-change { margin-left: 0; }
+  .catalog-modes { border-radius: 18px; }
 }
