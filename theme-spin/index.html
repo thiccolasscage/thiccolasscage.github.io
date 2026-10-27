@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NSFW Theme Spin</title>
-  <meta name="description" content="Adult catalog picker. Spin a title or settle a dilemma across mainstream, studio, streamer, and Reddit lanes." />
+  <meta name="description" content="Adult catalog picker. Choose Reddit, Movies, Studio, Streamer, or Everything, then spin a title or settle a dilemma." />
   <meta name="theme-color" content="#110d0e" />
   <link rel="icon" href="favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -30,7 +30,25 @@
     </div>
   </div>
 
+  <div id="mood" class="gate mood" role="dialog" aria-modal="true" aria-labelledby="mood-title" hidden>
+    <div class="gate-card mood-card">
+      <p class="eyebrow">Catalog</p>
+      <h2 id="mood-title">What are you in the mood for?</h2>
+      <p id="mood-lede" class="lede">Pick a pool. Looking for, at the top, switches it later. Spin and Dilemma still draw titles.</p>
+      <div id="mood-options" class="mood-options" role="radiogroup" aria-label="Catalog"></div>
+      <button id="mood-keep" class="btn btn-ghost mood-keep" type="button" hidden>Keep current</button>
+    </div>
+  </div>
+
   <div id="app" hidden>
+    <div class="catalog-bar" id="catalog-bar">
+      <div class="catalog-bar-inner">
+        <p class="catalog-kicker" id="catalog-kicker">Looking for</p>
+        <div id="catalog-modes" class="catalog-modes" role="radiogroup" aria-labelledby="catalog-kicker"></div>
+        <button id="change-mode" class="btn btn-ghost catalog-change" type="button">Change mode</button>
+      </div>
+      <p id="catalog-status" class="catalog-status" aria-live="polite"></p>
+    </div>
     <header class="top">
       <div class="brand">
         <p class="eyebrow" id="eyebrow">Adult catalog · 18+</p>
@@ -57,7 +75,7 @@
     </div>
 
     <footer class="site-footer">
-      <p>Seen marks stay in this browser only. The catalog and mainstream posters are local files, so spin and filter work with no network. Watch links are the only outbound step. Keys: S spin, D dilemma, 1 and 2 to choose.</p>
+      <p>Looking for, pinned at the top, limits the catalog to Reddit, Movies, Studio, Streamer, or Everything. Seen marks stay in this browser only. The catalog and mainstream posters are local files, so spin and filter work with no network. Watch links are the only outbound step. Keys: S spin, D dilemma, 1 and 2 to choose.</p>
     </footer>
   </div>
 
