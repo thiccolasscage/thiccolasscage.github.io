@@ -1,17 +1,17 @@
 {
   "exportedAt": "2026-10-27T04:23:47.663Z",
   "source": "https://cursor.com/canvas/store-8c1f7d29-21ff-43ef-92d2-63f497745583/3e3018ef-397b-486f-95b4-171bfcc7c0ce",
-  "titleCount": 271,
+  "titleCount": 303,
   "packCount": 24,
   "laneCounts": {
-    "mainstream": 19,
+    "mainstream": 51,
     "studio": 18,
     "streamer": 12,
     "reddit": 222
   },
   "heatCounts": {
-    "soft": 29,
-    "suggestive": 217,
+    "soft": 41,
+    "suggestive": 237,
     "explicit": 25
   },
   "lanes": [
@@ -10085,6 +10085,1423 @@
           "label": "Open streamer search"
         }
       ]
+    },
+    {
+      "id": "mainstream-unfaithful",
+      "name": "Unfaithful",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 2002,
+      "runtimeMin": 124,
+      "themes": [
+        "lingerie",
+        "public_risk",
+        "hotel"
+      ],
+      "tag": "Thriller",
+      "genres": [
+        {
+          "label": "Thriller",
+          "score": 85
+        },
+        {
+          "label": "Drama",
+          "score": 62
+        }
+      ],
+      "why": "Infidelity thriller with a famously charged affair and stairwell heat.",
+      "score": 80,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/unfaithful",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0250797/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/2251",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0250797",
+      "posterKey": "unfaithful-sm"
+    },
+    {
+      "id": "mainstream-no-strings-attached",
+      "name": "No Strings Attached",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 2011,
+      "runtimeMin": 107,
+      "themes": [
+        "lingerie"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 85
+        },
+        {
+          "label": "Romance",
+          "score": 62
+        }
+      ],
+      "why": "Casual-sex rom-com with frequent flirty bedroom beats.",
+      "score": 66,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/no-strings-attached",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt1411238/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/41630",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt1411238",
+      "posterKey": "no-strings-attached-sm"
+    },
+    {
+      "id": "mainstream-original-sin",
+      "name": "Original Sin",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 2001,
+      "runtimeMin": 116,
+      "themes": [
+        "boobs",
+        "lingerie"
+      ],
+      "tag": "Thriller",
+      "genres": [
+        {
+          "label": "Thriller",
+          "score": 85
+        },
+        {
+          "label": "Drama",
+          "score": 62
+        }
+      ],
+      "why": "Lush period erotic thriller with steamy, body-forward romance.",
+      "score": 74,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/original-sin",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0218922/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/2057",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0218922",
+      "posterKey": "original-sin-sm"
+    },
+    {
+      "id": "mainstream-sliver",
+      "name": "Sliver",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1993,
+      "runtimeMin": 107,
+      "themes": [
+        "shower",
+        "public_risk"
+      ],
+      "tag": "Drama",
+      "genres": [
+        {
+          "label": "Drama",
+          "score": 85
+        },
+        {
+          "label": "Thriller",
+          "score": 62
+        }
+      ],
+      "why": "Voyeur thriller in a high-rise; bath, balcony and watching galore.",
+      "score": 68,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/sliver",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0108162/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/867",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0108162",
+      "posterKey": "sliver-sm"
+    },
+    {
+      "id": "mainstream-striptease",
+      "name": "Striptease",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1996,
+      "runtimeMin": 115,
+      "themes": [
+        "boobs",
+        "lingerie",
+        "athletic"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 85
+        },
+        {
+          "label": "Crime",
+          "score": 62
+        }
+      ],
+      "why": "Club-dancer comedy-drama that's all stage lighting and choreography.",
+      "score": 66,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/striptease",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0117765/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/9879",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0117765",
+      "posterKey": "striptease-sm"
+    },
+    {
+      "id": "mainstream-henry-june",
+      "name": "Henry & June",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1990,
+      "runtimeMin": 136,
+      "themes": [
+        "boobs",
+        "lesbian"
+      ],
+      "tag": "Romance",
+      "genres": [
+        {
+          "label": "Romance",
+          "score": 85
+        }
+      ],
+      "why": "First NC-17 release; sensual literary love triangle in 1930s Paris.",
+      "score": 74,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/henry-june",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0099762/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/17993",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0099762",
+      "posterKey": "henry-june-sm"
+    },
+    {
+      "id": "mainstream-lust-caution",
+      "name": "Lust, Caution",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 2007,
+      "runtimeMin": 158,
+      "themes": [
+        "boobs",
+        "hotel"
+      ],
+      "tag": "Drama",
+      "genres": [
+        {
+          "label": "Drama",
+          "score": 85
+        },
+        {
+          "label": "Thriller",
+          "score": 62
+        }
+      ],
+      "why": "Espionage drama with notoriously intense, adult love scenes.",
+      "score": 78,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/lust-caution",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0808357/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/4588",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0808357",
+      "posterKey": "lust-caution-sm"
+    },
+    {
+      "id": "mainstream-magic-mike-xxl",
+      "name": "Magic Mike XXL",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 2015,
+      "runtimeMin": 115,
+      "themes": [
+        "athletic",
+        "ass"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 85
+        },
+        {
+          "label": "Drama",
+          "score": 62
+        }
+      ],
+      "why": "Road-trip sequel that's pure male-revue showmanship and abs.",
+      "score": 72,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/magic-mike-xxl",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt2268016/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/264999",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt2268016",
+      "posterKey": "magic-mike-xxl-sm"
+    },
+    {
+      "id": "mainstream-portrait-of-a-lady-on-fire",
+      "name": "Portrait of a Lady on Fire",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 2019,
+      "runtimeMin": 121,
+      "themes": [
+        "lesbian",
+        "outdoor"
+      ],
+      "tag": "Drama",
+      "genres": [
+        {
+          "label": "Drama",
+          "score": 85
+        },
+        {
+          "label": "Romance",
+          "score": 62
+        }
+      ],
+      "why": "Seaside period romance where gazes and bare shoulders do the work.",
+      "score": 78,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/portrait-of-a-lady-on-fire",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt8613070/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/531428",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt8613070",
+      "posterKey": "portrait-of-a-lady-on-fire-sm"
+    },
+    {
+      "id": "mainstream-body-double",
+      "name": "Body Double",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1984,
+      "runtimeMin": 114,
+      "themes": [
+        "lingerie",
+        "public_risk"
+      ],
+      "tag": "Crime",
+      "genres": [
+        {
+          "label": "Crime",
+          "score": 85
+        },
+        {
+          "label": "Mystery",
+          "score": 62
+        }
+      ],
+      "why": "De Palma voyeur thriller with a dance-at-the-window obsession.",
+      "score": 70,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/body-double",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0086984/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/11507",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0086984",
+      "posterKey": "body-double-sm"
+    },
+    {
+      "id": "mainstream-swimming-pool",
+      "name": "Swimming Pool",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 2003,
+      "runtimeMin": 102,
+      "themes": [
+        "boobs",
+        "outdoor"
+      ],
+      "tag": "Crime",
+      "genres": [
+        {
+          "label": "Crime",
+          "score": 85
+        },
+        {
+          "label": "Thriller",
+          "score": 62
+        }
+      ],
+      "why": "Sun-drenched French villa mystery with poolside topless lounging.",
+      "score": 74,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/swimming-pool",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0324133/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/302",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0324133",
+      "posterKey": "swimming-pool-sm"
+    },
+    {
+      "id": "mainstream-sex-and-lucia",
+      "name": "Sex and Lucía",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 2001,
+      "runtimeMin": 128,
+      "themes": [
+        "boobs",
+        "outdoor"
+      ],
+      "tag": "Drama",
+      "genres": [
+        {
+          "label": "Drama",
+          "score": 85
+        },
+        {
+          "label": "Romance",
+          "score": 62
+        }
+      ],
+      "why": "Sun-bleached Spanish erotic drama on an island of lovers.",
+      "score": 72,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/sex-and-lucia",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0254455/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/1364",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0254455",
+      "posterKey": "sex-and-lucia-sm"
+    },
+    {
+      "id": "mainstream-supervixens",
+      "name": "Supervixens",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1975,
+      "runtimeMin": 106,
+      "themes": [
+        "boobs",
+        "outdoor",
+        "athletic"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 82
+        },
+        {
+          "label": "Action",
+          "score": 58
+        }
+      ],
+      "why": "Russ Meyer desert cartoon of buxom supervixens, gas-station mayhem and wall-to-wall cleavage.",
+      "score": 76,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/supervixens",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.amazon.com/gp/video/detail/amzn1.dv.gti.d650ccca-b269-4926-98e3-1415aa125367?autoplay=1",
+          "label": "Fandor (Via Amazon Prime) (sub)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0073768/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/5725",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0073768",
+      "posterKey": "supervixens-sm"
+    },
+    {
+      "id": "mainstream-vixen",
+      "name": "Vixen!",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1968,
+      "runtimeMin": 72,
+      "themes": [
+        "boobs",
+        "outdoor",
+        "solo"
+      ],
+      "tag": "Drama",
+      "genres": [
+        {
+          "label": "Drama",
+          "score": 70
+        },
+        {
+          "label": "Comedy",
+          "score": 60
+        }
+      ],
+      "why": "Meyer's backwoods bombshell seduces everyone in sight — the X-rated breakthrough that launched the Meyer brand.",
+      "score": 74,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/vixen",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.philo.com/player/show/U2hvdzo2MDg1NDg4OTk2NDg1Mzg5Mzg",
+          "label": "Philo (sub)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0063787/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/5721",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0063787",
+      "posterKey": "vixen-sm"
+    },
+    {
+      "id": "mainstream-coffy",
+      "name": "Coffy",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1973,
+      "runtimeMin": 90,
+      "themes": [
+        "boobs",
+        "lingerie"
+      ],
+      "tag": "Crime",
+      "genres": [
+        {
+          "label": "Crime",
+          "score": 84
+        },
+        {
+          "label": "Action",
+          "score": 72
+        }
+      ],
+      "why": "Pam Grier's nurse-turned-vigilante uses glamour and topless catfights to bring down pushers.",
+      "score": 80,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/coffy",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://pluto.tv/on-demand/movies/coffy-1973-1-1",
+          "label": "Pluto TV (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0069897/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/22021",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0069897",
+      "posterKey": "coffy-sm"
+    },
+    {
+      "id": "mainstream-foxy-brown",
+      "name": "Foxy Brown",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1974,
+      "runtimeMin": 94,
+      "themes": [
+        "lingerie",
+        "boobs",
+        "hotel"
+      ],
+      "tag": "Crime",
+      "genres": [
+        {
+          "label": "Crime",
+          "score": 82
+        },
+        {
+          "label": "Action",
+          "score": 80
+        }
+      ],
+      "why": "Pam Grier goes undercover as a call girl to take down a vice ring — peak blaxploitation glamour.",
+      "score": 78,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/foxy-brown",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://fawesome.tv/movies/10558774/foxy-brown",
+          "label": "Fawesome (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0071517/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/22048",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0071517",
+      "posterKey": "foxy-brown-sm"
+    },
+    {
+      "id": "mainstream-barbarella",
+      "name": "Barbarella",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1968,
+      "runtimeMin": 98,
+      "themes": [
+        "boobs",
+        "lingerie",
+        "solo"
+      ],
+      "tag": "Sci-Fi",
+      "genres": [
+        {
+          "label": "Sci-Fi",
+          "score": 80
+        },
+        {
+          "label": "Comedy",
+          "score": 64
+        }
+      ],
+      "why": "Jane Fonda's zero-g striptease opener and pleasure-machine camp — the space-age sex-kitten classic.",
+      "score": 80,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/barbarella",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://athome.fandango.com/content/browse/details/Barbarella/14186",
+          "label": "Fandango at Home (rent)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0062711/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/8069",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0062711",
+      "posterKey": "barbarella-sm"
+    },
+    {
+      "id": "mainstream-beneath-the-valley-of-the-ultra-vixens",
+      "name": "Beneath the Valley of the Ultra-Vixens",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1979,
+      "runtimeMin": 93,
+      "themes": [
+        "boobs",
+        "ass",
+        "outdoor"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 84
+        },
+        {
+          "label": "Romance",
+          "score": 40
+        }
+      ],
+      "why": "Meyer's final, most outrageous small-town sex farce — narrated chaos and maximalist curves.",
+      "score": 72,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/beneath-the-valley-of-the-ultra-vixens",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.philo.com/player/show/U2hvdzo2MDg1NDg4OTk2NDg1NDI0MjE",
+          "label": "Philo (sub)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0078846/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/5157",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0078846",
+      "posterKey": "beneath-the-valley-of-the-ultra-vixens-sm"
+    },
+    {
+      "id": "mainstream-up-1976",
+      "name": "Up!",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1976,
+      "runtimeMin": 81,
+      "themes": [
+        "boobs",
+        "outdoor",
+        "athletic"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 80
+        },
+        {
+          "label": "Crime",
+          "score": 55
+        }
+      ],
+      "why": "Russ Meyer murder-mystery sex romp with a nude Greek-chorus narrator — not the Pixar one.",
+      "score": 68,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/up-1976",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.philo.com/player/show/U2hvdzo2MDg1NDg4OTk2NDg1NDI0MzU",
+          "label": "Philo (sub)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0075376/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/5651",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0075376",
+      "posterKey": "up-1976-sm"
+    },
+    {
+      "id": "mainstream-beyond-the-valley-of-the-dolls",
+      "name": "Beyond the Valley of the Dolls",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1970,
+      "runtimeMin": 109,
+      "themes": [
+        "boobs",
+        "lingerie",
+        "lesbian"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 76
+        },
+        {
+          "label": "Music",
+          "score": 66
+        },
+        {
+          "label": "Drama",
+          "score": 58
+        }
+      ],
+      "why": "Meyer & Ebert's psychedelic girl-band satire — rock, orgies and a camp-gonzo finale.",
+      "score": 80,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/beyond-the-valley-of-the-dolls",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.criterionchannel.com/newly-added/videos/beyond-the-valley-of-the-dolls",
+          "label": "The Criterion Channel (sub)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0065466/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/5722",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0065466",
+      "posterKey": "beyond-the-valley-of-the-dolls-sm"
+    },
+    {
+      "id": "mainstream-boogie-nights",
+      "name": "Boogie Nights",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1997,
+      "runtimeMin": 156,
+      "themes": [
+        "boobs",
+        "lingerie",
+        "hotel"
+      ],
+      "tag": "Drama",
+      "genres": [
+        {
+          "label": "Drama",
+          "score": 86
+        },
+        {
+          "label": "Comedy",
+          "score": 64
+        }
+      ],
+      "why": "PTA's 70s porn-industry epic — disco, excess and the famous final reveal.",
+      "score": 86,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/boogie-nights",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://watch.plex.tv/movie/boogie-nights",
+          "label": "Plex (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0118749/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/4995",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0118749",
+      "posterKey": "boogie-nights-sm"
+    },
+    {
+      "id": "mainstream-faster-pussycat-kill-kill",
+      "name": "Faster, Pussycat! Kill! Kill!",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1965,
+      "runtimeMin": 83,
+      "themes": [
+        "athletic",
+        "outdoor"
+      ],
+      "tag": "Action",
+      "genres": [
+        {
+          "label": "Action",
+          "score": 76
+        },
+        {
+          "label": "Crime",
+          "score": 70
+        },
+        {
+          "label": "Comedy",
+          "score": 60
+        }
+      ],
+      "why": "Go-go dancers in hot rods tear across the desert — Meyer's iconic, more-cleavage-than-nudity cult classic.",
+      "score": 80,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/faster-pussycat-kill-kill",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0059170/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/315",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0059170",
+      "posterKey": "faster-pussycat-kill-kill-sm"
+    },
+    {
+      "id": "mainstream-austin-powers-international-man-of-mystery",
+      "name": "Austin Powers: International Man of Mystery",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1997,
+      "runtimeMin": 89,
+      "themes": [
+        "boobs",
+        "hotel"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 88
+        },
+        {
+          "label": "Crime",
+          "score": 40
+        }
+      ],
+      "why": "Swinging-60s spy spoof — fembots, shagadelic innuendo and strategically blocked nudity.",
+      "score": 76,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/austin-powers-international-man-of-mystery",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://athome.fandango.com/content/browse/details/Austin-Powers-International-Man-of-Mystery/12622",
+          "label": "Fandango at Home (rent)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0118655/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/816",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0118655",
+      "posterKey": "austin-powers-international-man-of-mystery-sm"
+    },
+    {
+      "id": "mainstream-bachelor-party",
+      "name": "Bachelor Party",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1984,
+      "runtimeMin": 105,
+      "themes": [
+        "boobs",
+        "hotel",
+        "public_risk"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 86
+        },
+        {
+          "label": "Romance",
+          "score": 46
+        }
+      ],
+      "why": "Tom Hanks' anything-goes hotel bachelor bash — strippers, hookers and 80s sex-comedy chaos.",
+      "score": 72,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/bachelor-party",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://athome.fandango.com/content/browse/details/Bachelor-Party/4967854",
+          "label": "Fandango at Home (rent)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0086927/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/12309",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0086927",
+      "posterKey": "bachelor-party-sm"
+    },
+    {
+      "id": "mainstream-spring-break",
+      "name": "Spring Break",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1983,
+      "runtimeMin": 102,
+      "themes": [
+        "outdoor",
+        "athletic"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 80
+        },
+        {
+          "label": "Romance",
+          "score": 50
+        }
+      ],
+      "why": "Fort Lauderdale college guys, wet T-shirt contests and beach-motel antics — peak 80s spring-break kitsch.",
+      "score": 58,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/spring-break",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://tubitv.com/movies/658759",
+          "label": "Tubi TV (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0086352/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/21148",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0086352",
+      "posterKey": "spring-break-sm"
+    },
+    {
+      "id": "mainstream-the-cannonball-run",
+      "name": "The Cannonball Run",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1981,
+      "runtimeMin": 95,
+      "themes": [
+        "athletic",
+        "outdoor"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 82
+        },
+        {
+          "label": "Action",
+          "score": 70
+        }
+      ],
+      "why": "Cross-country outlaw road race — Farrah Fawcett and Lamborghini-driving spandex bombshells as eye candy.",
+      "score": 66,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/the-cannonball-run",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0082136/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/11286",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0082136",
+      "posterKey": "the-cannonball-run-sm"
+    },
+    {
+      "id": "mainstream-all-ladies-do-it",
+      "name": "All Ladies Do It",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1992,
+      "runtimeMin": 93,
+      "themes": [
+        "ass",
+        "lingerie",
+        "hotel",
+        "public_risk"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 72
+        },
+        {
+          "label": "Drama",
+          "score": 66
+        }
+      ],
+      "why": "Tinto Brass's cheeky Venetian adultery farce — Claudia Koll and peak Brass rear-view worship.",
+      "score": 70,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/all-ladies-do-it",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://fawesome.tv/movies/10767798/all-ladies-do-it-1992",
+          "label": "Fawesome (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0104014/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/37265",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0104014",
+      "posterKey": "all-ladies-do-it-sm"
+    },
+    {
+      "id": "mainstream-black-mama-white-mama",
+      "name": "Black Mama, White Mama",
+      "lane": "mainstream",
+      "heat": "suggestive",
+      "year": 1973,
+      "runtimeMin": 87,
+      "themes": [
+        "shower",
+        "outdoor",
+        "athletic"
+      ],
+      "tag": "Action",
+      "genres": [
+        {
+          "label": "Action",
+          "score": 76
+        },
+        {
+          "label": "Crime",
+          "score": 70
+        }
+      ],
+      "why": "Pam Grier and Margaret Markov chained-together jailbreak — women-in-prison shower scenes and jungle shootouts.",
+      "score": 66,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/black-mama-white-mama",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://tubitv.com/movies/322160",
+          "label": "Tubi TV (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0068282/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/28797",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0068282",
+      "posterKey": "black-mama-white-mama-sm"
+    },
+    {
+      "id": "mainstream-meatballs",
+      "name": "Meatballs",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1979,
+      "runtimeMin": 92,
+      "themes": [
+        "outdoor",
+        "athletic"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 82
+        }
+      ],
+      "why": "Bill Murray's goofy head-counselor energy and adult counselor flirtation in a summer-camp comedy.",
+      "score": 64,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/meatballs",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://therokuchannel.roku.com/details/4a972862aafc559eaa98bad894ec76aa/meatballs?source=bing",
+          "label": "The Roku Channel (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0079540/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/14035",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0079540",
+      "posterKey": "meatballs-sm"
+    },
+    {
+      "id": "mainstream-porkys",
+      "name": "Porky's",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1981,
+      "runtimeMin": 94,
+      "themes": [
+        "shower",
+        "outdoor"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 84
+        }
+      ],
+      "why": "1950s Florida raunch comedy — strip-club revenge feud, slapstick and campy bare-skin gags.",
+      "score": 66,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/porkys",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.hoopladigital.com/title/15525096",
+          "label": "Hoopla (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0084522/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/10246",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0084522",
+      "posterKey": "porkys-sm"
+    },
+    {
+      "id": "mainstream-porkys-revenge",
+      "name": "Porky's Revenge",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 1985,
+      "runtimeMin": 92,
+      "themes": [
+        "outdoor",
+        "athletic"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 80
+        }
+      ],
+      "why": "Campy sequel — more bawdy slapstick, beach skin and a riverboat-casino showdown.",
+      "score": 54,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/porkys-revenge",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt0089826/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/23919",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt0089826",
+      "posterKey": "porkys-revenge-sm"
+    },
+    {
+      "id": "mainstream-sex-drive",
+      "name": "Sex Drive",
+      "lane": "mainstream",
+      "heat": "soft",
+      "year": 2008,
+      "runtimeMin": 109,
+      "themes": [
+        "outdoor",
+        "boobs"
+      ],
+      "tag": "Comedy",
+      "genres": [
+        {
+          "label": "Comedy",
+          "score": 84
+        },
+        {
+          "label": "Romance",
+          "score": 56
+        }
+      ],
+      "why": "Raunchy road-trip comedy — muscle-car chaos, Amish-party detour, adult hookup gags.",
+      "score": 62,
+      "reddit": null,
+      "links": [
+        {
+          "href": "https://www.justwatch.com/us/movie/sex-drive",
+          "label": "JustWatch"
+        },
+        {
+          "href": "https://therokuchannel.roku.com/details/50ffea92e4b45a0c9f0c126b2004f6ec/sex-drive-unrated?source=bing",
+          "label": "The Roku Channel (free)"
+        },
+        {
+          "href": "https://www.imdb.com/title/tt1135985/",
+          "label": "IMDb"
+        },
+        {
+          "href": "https://www.themoviedb.org/movie/13523",
+          "label": "TMDB"
+        }
+      ],
+      "imdbId": "tt1135985",
+      "posterKey": "sex-drive-sm"
     }
   ]
 }
