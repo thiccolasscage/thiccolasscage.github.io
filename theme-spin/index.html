@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NSFW Theme Spin</title>
-  <meta name="description" content="Adult catalog picker. Choose Reddit, Movies, Studio, Streamer, or Everything, then spin a title or settle a dilemma." />
+  <meta name="description" content="Adult catalog picker. Choose Reddit, Movies, Studio, Streamer, or Everything, then spin a title, settle a dilemma, or run Birthday Night packs." />
   <meta name="theme-color" content="#110d0e" />
   <link rel="icon" href="favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -57,6 +57,7 @@
       <div class="top-actions">
         <button id="mode-spin" class="btn mode-btn" type="button" aria-pressed="true">Spin</button>
         <button id="mode-dilemma" class="btn mode-btn" type="button" aria-pressed="false">Dilemma</button>
+        <button id="mode-night" class="btn mode-btn" type="button" aria-pressed="false" title="Birthday Night">Night</button>
         <a class="btn btn-ghost" href="#packs">Packs</a>
         <button id="clear-seen" class="btn btn-ghost" type="button">Clear seen</button>
         <span id="seen-count" class="seen-count"></span>
@@ -68,6 +69,7 @@
       <div class="content">
         <p id="pool-line" class="pool-line" data-count="0"></p>
         <div id="banner"></div>
+        <section id="night-stage" class="night-stage" hidden aria-live="polite" aria-label="Birthday Night"></section>
         <section id="stage" aria-live="polite"></section>
         <section id="shelf"></section>
         <section id="packs"></section>
@@ -75,7 +77,7 @@
     </div>
 
     <footer class="site-footer">
-      <p>Looking for, pinned at the top, limits the catalog to Reddit, Movies, Studio, Streamer, or Everything. Seen marks stay in this browser only. The catalog and mainstream posters are local files, so spin and filter work with no network. Watch links are the only outbound step. Keys: S spin, D dilemma, 1 and 2 to choose.</p>
+      <p>Looking for, pinned at the top, limits Spin and Dilemma to Reddit, Movies, Studio, Streamer, or Everything. Night packs use their own lists and still follow the heat ceiling and Hide seen. Seen marks stay in this browser only. The catalog and mainstream posters are local files, so spin and filter work with no network. Watch links are the only outbound step. Keys: S spin, D dilemma, N night, 1 and 2 to choose.</p>
     </footer>
   </div>
 

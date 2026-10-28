@@ -69,6 +69,7 @@
     drawnIds: [],
     shelfLabel: "",
     dilemma: { leftId: null, rightId: null, seeds: [], round: 0 },
+    night: { packId: "soft", featureId: null, byPack: {}, notice: "", copyText: "" },
     spinning: false,
     spinTimer: 0,
     catalogMode: null,
@@ -427,11 +428,11 @@
     );
   }
 
-  function wireSpinAgain(card) {
+  function wireSpinAgain(card, handler) {
     var buttons = card.querySelectorAll("button");
     for (var i = 0; i < buttons.length; i += 1) {
       if (buttons[i].textContent === "Spin again") {
-        buttons[i].addEventListener("click", spin);
+        buttons[i].addEventListener("click", handler || spin);
       }
     }
   }
@@ -624,6 +625,7 @@
       stopMotion();
       state.heatMax = gap.id;
       if (state.mode === "dilemma") startDilemma(null);
+      else if (state.mode === "night") spinNightPack(state.night.packId || "soft");
       else spin();
     });
     return button;
@@ -807,8 +809,14 @@
     var lead = locked
       ? pool.length + " of " + universe + " in " + mode.label + ". "
       : pool.length + " of " + universe + " titles match. ";
-    ui.poolLine.textContent = lead + HEAT_HINT[state.heatMax] + (aboveHeat ? " " + aboveHeat + " sit above this heat." : "");
-    ui.poolLine.dataset.count = String(pool.length);
+    if (state.mode === "night") {
+      var nightPack = nightPackMeta(state.night.packId) || nightPackMeta("soft");
+      var nightCount = nightPool(nightPack.id).length;
+      ui.poolLine.textContent = "Birthday Night · " + nightPack.label + " · " + nightCount + " in this pack. " + HEAT_HINT[state.heatMax];
+    } else {
+      ui.poolLine.textContent = lead + HEAT_HINT[state.heatMax] + (aboveHeat ? " " + aboveHeat + " sit above this heat." : "");
+    }
+    ui.poolLine.dataset.count = String(state.mode === "night" ? nightPool(state.night.packId || "soft").length : pool.length);
     ui.poolLine.dataset.total = String(universe);
     ui.poolLine.dataset.catalogMode = state.catalogMode || "";
     ui.seenCount.textContent = state.seen.size ? state.seen.size + " seen" : "None seen";
@@ -816,6 +824,7 @@
     ui.clearSeen.textContent = state.seen.size ? "Clear seen (" + state.seen.size + ")" : "Clear seen";
     ui.modeSpin.setAttribute("aria-pressed", state.mode === "spin" ? "true" : "false");
     ui.modeDilemma.setAttribute("aria-pressed", state.mode === "dilemma" ? "true" : "false");
+    if (ui.modeNight) ui.modeNight.setAttribute("aria-pressed", state.mode === "night" ? "true" : "false");
     syncCatalogChrome();
     document.querySelectorAll("[data-heat]").forEach(function (button) {
       button.setAttribute("aria-pressed", state.heatMax === button.dataset.heat ? "true" : "false");
@@ -845,11 +854,24 @@
     if (scoreOut) scoreOut.textContent = String(state.minScore);
     clear(ui.stage);
     clear(ui.shelf);
-    renderBanner();
-    if (state.mode === "dilemma") renderDilemma(pool);
-    else renderSpin(pool);
-    ui.stage.dataset.feature = state.featureId || "";
-    ui.stage.dataset.mode = state.mode;
+    if (ui.nightStage) ui.nightStage.hidden = state.mode !== "night";
+    if (ui.packs) ui.packs.hidden = state.mode === "night";
+    var skip = document.querySelector(".skip");
+    if (skip) skip.setAttribute("href", state.mode === "night" ? "#night-stage" : "#stage");
+    if (state.mode === "night") {
+      clear(ui.banner);
+      clear(ui.nightStage);
+      renderNight();
+      ui.stage.dataset.feature = "";
+      ui.stage.dataset.mode = "night";
+    } else {
+      if (ui.nightStage) clear(ui.nightStage);
+      renderBanner();
+      if (state.mode === "dilemma") renderDilemma(pool);
+      else renderSpin(pool);
+      ui.stage.dataset.feature = state.featureId || "";
+      ui.stage.dataset.mode = state.mode;
+    }
     renderPacks(pool.length);
   }
 
@@ -987,6 +1009,257 @@
     else state.seen.add(id);
     saveSeen();
     render();
+  }
+
+  function nightPackMeta(packId) {
+    var packs = window.SpinLogic.listNightPacks();
+    for (var i = 0; i < packs.length; i += 1) {
+      if (packs[i].id === packId) return packs[i];
+    }
+    return packs[0];
+  }
+
+  function nightOptions() {
+    return {
+      hideSeen: state.hideSeen,
+      seen: state.seen,
+      heatMax: state.heatMax,
+    };
+  }
+
+  function nightPool(packId) {
+    return window.SpinLogic.buildNightPool(catalog, packId, nightOptions());
+  }
+
+  function tonightEntries() {
+    var picks = [];
+    window.SpinLogic.listNightPacks().forEach(function (pack) {
+      var title = titleById(state.night.byPack[pack.id]);
+      if (!title) return;
+      picks.push({ packId: pack.id, label: pack.label, title: title });
+    });
+    return picks;
+  }
+
+  function showNight() {
+    stopMotion();
+    state.mode = "night";
+    if (!state.night.packId) state.night.packId = "soft";
+    render();
+    if (ui.nightStage && ui.nightStage.scrollIntoView) ui.nightStage.scrollIntoView({ block: "start" });
+  }
+
+  function spinNightPack(packId) {
+    stopMotion();
+    state.mode = "night";
+    state.night.packId = packId;
+    state.night.notice = "";
+    state.night.copyText = "";
+    var pool = nightPool(packId);
+    var drawn = window.SpinLogic.drawNightTitle(pool, Math.random, state.night.byPack[packId] || null);
+    if (drawn) {
+      state.night.byPack[packId] = drawn.id;
+      state.night.featureId = drawn.id;
+    } else {
+      state.night.featureId = null;
+    }
+    render();
+  }
+
+  function spinAllNight() {
+    stopMotion();
+    state.mode = "night";
+    state.night.notice = "";
+    state.night.copyText = "";
+    var picks = window.SpinLogic.drawNightAll(catalog, nightOptions());
+    var byPack = {};
+    picks.forEach(function (pick) { byPack[pick.packId] = pick.title.id; });
+    state.night.byPack = byPack;
+    if (picks.length) {
+      state.night.packId = picks[0].packId;
+      state.night.featureId = picks[0].title.id;
+    } else {
+      state.night.featureId = null;
+    }
+    render();
+  }
+
+  function copyNight() {
+    var picks = tonightEntries();
+    var text = window.SpinLogic.formatNightCopy(picks);
+    if (!text) {
+      state.night.notice = "Spin a pack before copying.";
+      state.night.copyText = "";
+      render();
+      return;
+    }
+    var copied = function () {
+      state.night.notice = "Copied " + picks.length + (picks.length === 1 ? " pick." : " picks.");
+      state.night.copyText = "";
+      render();
+    };
+    var failed = function () {
+      state.night.notice = "Clipboard unavailable. The night list is in the box below.";
+      state.night.copyText = text;
+      render();
+      var box = document.getElementById("night-copy-fallback");
+      if (box) {
+        box.focus();
+        box.select();
+      }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(copied, failed);
+      return;
+    }
+    try {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.append(area);
+      area.select();
+      var ok = document.execCommand("copy");
+      area.remove();
+      if (ok) copied();
+      else failed();
+    } catch (err) {
+      failed();
+    }
+  }
+
+  function nightEmptyCopy(pack) {
+    var atHeat = window.SpinLogic.buildNightPool(catalog, pack.id, {
+      hideSeen: false,
+      seen: state.seen,
+      heatMax: state.heatMax,
+    });
+    if (state.hideSeen && atHeat.length) {
+      return "Every " + pack.label + " title at this heat is marked seen. Show seen titles, or clear the list.";
+    }
+    var gap = modeHeatGap();
+    if (!atHeat.length && gap) {
+      return pack.label + " has nothing at the " + heatMeta(state.heatMax).label + " ceiling. Raise heat to " + gap.label + ".";
+    }
+    return "Nothing in " + pack.label + " is in the catalog at this heat.";
+  }
+
+  function renderTonight() {
+    var picks = tonightEntries();
+    var copy = el("button", {
+      type: "button",
+      class: "btn btn-ghost",
+      text: "Copy night",
+      disabled: picks.length ? false : true,
+    });
+    copy.addEventListener("click", copyNight);
+    var wrap = el("section", { class: "tonight", "aria-label": "Tonight" },
+      el("div", { class: "shelf-head" },
+        el("h2", { text: "Tonight" }),
+        el("span", { class: "mini-meta", text: picks.length + " of 5" })
+      ),
+      el("div", { class: "actions" }, copy)
+    );
+    if (state.night.notice) {
+      wrap.append(el("p", { class: "copy-note", text: state.night.notice, "aria-live": "polite" }));
+    }
+    if (state.night.copyText) {
+      wrap.append(el("textarea", {
+        id: "night-copy-fallback",
+        class: "night-copy-fallback",
+        readonly: true,
+        rows: "6",
+        "aria-label": "Tonight list",
+      }));
+    }
+    if (!picks.length) {
+      wrap.append(el("p", { class: "pack-meta", text: "Up to five picks, one per pack. Copy night writes the pack, title, and year." }));
+      return wrap;
+    }
+    var list = el("div", { class: "tonight-list" });
+    picks.forEach(function (pick) {
+      var button = el("button", {
+        type: "button",
+        class: "tonight-item" + (pick.title.id === state.night.featureId ? " is-on" : ""),
+      },
+        el("span", { class: "tonight-pack", text: pick.label }),
+        el("span", { class: "tonight-title", text: pick.title.name + " (" + pick.title.year + ")" })
+      );
+      button.addEventListener("click", function () {
+        state.night.packId = pick.packId;
+        state.night.featureId = pick.title.id;
+        state.night.notice = "";
+        render();
+      });
+      list.append(button);
+    });
+    wrap.append(list);
+    if (state.night.copyText) {
+      var box = wrap.querySelector("#night-copy-fallback");
+      if (box) box.value = state.night.copyText;
+    }
+    return wrap;
+  }
+
+  function renderNight() {
+    var packs = window.SpinLogic.listNightPacks();
+    var active = nightPackMeta(state.night.packId);
+    ui.nightStage.dataset.mode = "night";
+    ui.nightStage.dataset.pack = active.id;
+    ui.nightStage.dataset.feature = state.night.featureId || "";
+    ui.nightStage.append(el("div", { class: "night-intro" },
+      el("p", { class: "eyebrow", text: "Birthday Night" }),
+      el("h2", { text: "Five packs" }),
+      el("p", {
+        class: "pack-meta",
+        text: "Soft, Camp, Thriller, Shower, or Prestige-sensual. Spin one pack, or spin all five. Hide seen uses the same seen list as Spin.",
+      })
+    ));
+    var chips = el("div", { class: "chip-row night-packs", role: "group", "aria-label": "Birthday Night packs" });
+    packs.forEach(function (pack) {
+      var count = nightPool(pack.id).length;
+      var button = el("button", {
+        type: "button",
+        class: "chip night-pack" + (count ? "" : " is-empty"),
+        "aria-pressed": pack.id === active.id ? "true" : "false",
+        dataset: { nightPack: pack.id },
+      }, pack.label, el("span", { class: "count", text: String(count) }));
+      button.addEventListener("click", function () { spinNightPack(pack.id); });
+      chips.append(button);
+    });
+    var spinOne = el("button", { type: "button", class: "btn", text: "Spin " + active.label });
+    spinOne.addEventListener("click", function () { spinNightPack(active.id); });
+    var spinAll = el("button", { type: "button", class: "btn btn-primary", text: "Spin all five" });
+    spinAll.addEventListener("click", spinAllNight);
+    ui.nightStage.append(chips, el("div", { class: "night-actions actions" }, spinOne, spinAll));
+
+    var result = el("div", { class: "night-result" });
+    var feature = titleById(state.night.featureId);
+    var currentPool = nightPool(active.id);
+    if (feature) {
+      result.append(el("p", { class: "kicker", text: active.label }));
+      var card = detailCard(feature);
+      wireSpinAgain(card, function () { spinNightPack(state.night.packId || active.id); });
+      result.append(card);
+    } else if (!currentPool.length) {
+      result.append(el("div", { class: "empty", text: nightEmptyCopy(active) }));
+      var atHeat = window.SpinLogic.buildNightPool(catalog, active.id, {
+        hideSeen: false,
+        seen: state.seen,
+        heatMax: state.heatMax,
+      });
+      if (!(state.hideSeen && atHeat.length)) {
+        var raise = heatRaiseControl();
+        if (raise) result.append(el("div", { class: "actions" }, raise));
+      }
+    } else {
+      result.append(el("div", {
+        class: "empty",
+        text: "Spin " + active.label + " draws one random title from " + currentPool.length + " in this pack.",
+      }));
+    }
+    ui.nightStage.append(result, renderTonight());
   }
 
   function mountFilters() {
@@ -1142,6 +1415,7 @@
     }
     stopMotion();
     if (state.mode === "dilemma") startDilemma(null);
+    else if (state.mode === "night") render();
     else spin();
   }
 
@@ -1174,8 +1448,8 @@
     }
     if (ui.moodLede) {
       ui.moodLede.textContent = firstRun
-        ? "Pick a pool. Reddit is communities, Movies are films, Studio is adult scenes, and Streamer is clips. Everything mixes all four. Looking for, at the top, switches it later."
-        : "This only changes which titles are in the pool. Spin and Dilemma stay the draw buttons.";
+        ? "Pick a pool. Reddit is communities, Movies are films, Studio is adult scenes, and Streamer is clips. Everything mixes all four. Looking for, at the top, switches it later. Night keeps its own packs."
+        : "This changes which titles Spin and Dilemma draw. Night keeps its own packs and still follows the heat ceiling and Hide seen.";
     }
     document.querySelectorAll("[data-mood]").forEach(function (button) {
       button.setAttribute("aria-checked", button.dataset.mood === state.catalogMode ? "true" : "false");
@@ -1248,6 +1522,7 @@
   function bindChrome() {
     ui.modeSpin.addEventListener("click", spin);
     ui.modeDilemma.addEventListener("click", function () { startDilemma(null); });
+    if (ui.modeNight) ui.modeNight.addEventListener("click", showNight);
     ui.clearSeen.addEventListener("click", function () {
       state.seen.clear();
       saveSeen();
@@ -1276,6 +1551,11 @@
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       if (event.key === "s" || event.key === "S") { event.preventDefault(); spin(); }
       if (event.key === "d" || event.key === "D") { event.preventDefault(); startDilemma(null); }
+      if (event.key === "n" || event.key === "N") {
+        event.preventDefault();
+        if (state.mode === "night") spinNightPack(state.night.packId || "soft");
+        else showNight();
+      }
       if (event.key === "1") chooseSide("left");
       if (event.key === "2") chooseSide("right");
     });
@@ -1305,6 +1585,8 @@
     ui.clearSeen = document.getElementById("clear-seen");
     ui.modeSpin = document.getElementById("mode-spin");
     ui.modeDilemma = document.getElementById("mode-dilemma");
+    ui.modeNight = document.getElementById("mode-night");
+    ui.nightStage = document.getElementById("night-stage");
     ui.catalogBar = document.getElementById("catalog-bar");
     ui.catalogModes = document.getElementById("catalog-modes");
     ui.catalogStatus = document.getElementById("catalog-status");
