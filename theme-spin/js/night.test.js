@@ -34,7 +34,9 @@ test("engine spin and dilemma helpers still build a pool", () => {
     themeId: null,
     packId: null,
   });
-  assert.ok(list.length >= 19);
+  assert.ok(list.length >= 49);
+  assert.equal(list.some((title) => title.id === "mainstream-boogie-nights"), true);
+  assert.equal(list.some((title) => title.name === "Emmanuelle"), false);
   assert.equal(typeof engine.spinDraw, "function");
   assert.equal(typeof engine.dilemmaShelf, "function");
 });
@@ -51,20 +53,45 @@ test("night exposes five packs", () => {
 });
 
 test("soft pool is the light mainstream set plus named fallbacks", () => {
-  assert.deepEqual(names(pool("soft", { heatMax: "suggestive" })), [
+  const soft = names(pool("soft", { heatMax: "suggestive" }));
+  assert.deepEqual(soft, [
     "Challengers",
+    "Faster, Pussycat! Kill! Kill!",
     "Knocked Up",
     "Love & Other Drugs",
     "Magic Mike",
+    "Magic Mike XXL",
+    "Meatballs",
+    "No Strings Attached",
+    "Porky's",
+    "Porky's Revenge",
+    "Portrait of a Lady on Fire",
     "Risky Business",
+    "Spring Break",
+    "The Cannonball Run",
   ]);
-  assert.equal(names(pool("soft", { heatMax: "suggestive" })).includes("American Pie"), false);
-  assert.equal(names(pool("soft", { heatMax: "suggestive" })).includes("Fast Times at Ridgemont High"), false);
+  assert.equal(soft.includes("American Pie"), false);
+  assert.equal(soft.includes("Fast Times at Ridgemont High"), false);
+  assert.equal(soft.includes("Boogie Nights"), false);
+  assert.equal(soft.includes("Sex Drive"), false);
 });
 
 test("soft heat ceiling drops suggestive fallbacks and hide-seen removes a title", () => {
   const softOnly = names(pool("soft", { heatMax: "soft" }));
-  assert.deepEqual(softOnly, ["Challengers", "Magic Mike", "Risky Business"]);
+  assert.deepEqual(softOnly, [
+    "Challengers",
+    "Faster, Pussycat! Kill! Kill!",
+    "Magic Mike",
+    "Magic Mike XXL",
+    "Meatballs",
+    "No Strings Attached",
+    "Porky's",
+    "Porky's Revenge",
+    "Portrait of a Lady on Fire",
+    "Risky Business",
+    "Spring Break",
+    "The Cannonball Run",
+  ]);
   const seen = new Set(["mainstream-challengers"]);
   const hidden = names(pool("soft", { heatMax: "suggestive", hideSeen: true, seen: seen }));
   assert.equal(hidden.includes("Challengers"), false);
@@ -74,13 +101,24 @@ test("soft heat ceiling drops suggestive fallbacks and hide-seen removes a title
 test("camp pool keeps the named sex-comedies and suggestive camp titles", () => {
   assert.deepEqual(names(pool("camp", { heatMax: "explicit" })), [
     "American Pie",
+    "Austin Powers: International Man of Mystery",
+    "Bachelor Party",
+    "Barbarella",
+    "Beneath the Valley of the Ultra-Vixens",
+    "Coffy",
     "Fast Times at Ridgemont High",
+    "Faster, Pussycat! Kill! Kill!",
+    "Foxy Brown",
     "Showgirls",
+    "Supervixens",
+    "Vixen!",
     "Wild Things",
   ]);
   assert.deepEqual(names(pool("camp", { heatMax: "soft" })), [
     "American Pie",
+    "Austin Powers: International Man of Mystery",
     "Fast Times at Ridgemont High",
+    "Faster, Pussycat! Kill! Kill!",
   ]);
 });
 
@@ -157,6 +195,67 @@ test("draw helpers return one title per requested pack and skip repeats", () => 
   assert.equal(new Set(picks.map((pick) => pick.packId)).size, picks.length);
   assert.equal(new Set(picks.map((pick) => pick.title.id)).size, picks.length);
   assert.deepEqual(Array.from(picks, (pick) => pick.packId), ["soft", "camp", "thriller", "shower", "prestige"]);
+});
+
+test("merged movies stay in the catalog with posters and the cuts stay out", () => {
+  assert.equal(catalog.titleCount, 303);
+  assert.equal(catalog.titles.length, 303);
+  assert.equal(catalog.laneCounts.mainstream, 51);
+  const heats = { soft: 0, suggestive: 0, explicit: 0 };
+  const lanes = { mainstream: 0, studio: 0, streamer: 0, reddit: 0 };
+  for (const title of catalog.titles) {
+    heats[title.heat] += 1;
+    lanes[title.lane] += 1;
+  }
+  assert.deepEqual(catalog.heatCounts, heats);
+  assert.deepEqual(catalog.laneCounts, lanes);
+  const js = fs.readFileSync(path.join(root, "data/catalog.js"), "utf8");
+  const json = fs.readFileSync(path.join(root, "data/catalog.json"), "utf8");
+  assert.equal(js, "window.NSFW_CATALOG = " + json + ";\n");
+  for (const name of ["Bilitis", "Switchblade Sisters", "Emmanuelle"]) {
+    assert.equal(catalog.titles.some((title) => title.name === name), false, name);
+  }
+  const added = [
+    "Unfaithful",
+    "No Strings Attached",
+    "Original Sin",
+    "Sliver",
+    "Striptease",
+    "Henry & June",
+    "Lust, Caution",
+    "Magic Mike XXL",
+    "Portrait of a Lady on Fire",
+    "Body Double",
+    "Swimming Pool",
+    "Sex and Lucía",
+    "Supervixens",
+    "Vixen!",
+    "Coffy",
+    "Foxy Brown",
+    "Barbarella",
+    "Beneath the Valley of the Ultra-Vixens",
+    "Up!",
+    "Beyond the Valley of the Dolls",
+    "Boogie Nights",
+    "Faster, Pussycat! Kill! Kill!",
+    "Austin Powers: International Man of Mystery",
+    "Bachelor Party",
+    "Spring Break",
+    "The Cannonball Run",
+    "All Ladies Do It",
+    "Black Mama, White Mama",
+    "Meatballs",
+    "Porky's",
+    "Porky's Revenge",
+    "Sex Drive",
+  ];
+  assert.equal(added.length, 32);
+  for (const name of added) {
+    const title = catalog.titles.find((item) => item.name === name);
+    assert.ok(title, name);
+    assert.equal(title.lane, "mainstream");
+    assert.equal(fs.existsSync(path.join(root, "posters", title.posterKey + ".jpg")), true, title.posterKey);
+  }
 });
 
 test("copy night is plain text with pack, title, and year", () => {
